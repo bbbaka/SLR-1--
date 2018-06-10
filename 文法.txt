@@ -1,6 +1,6 @@
 135 54 46
-<program> <segment> <type> <defdata> <varrdef> <init> <deflist> <def> <idtail> <funtail> <paradata> <paradatatail> <paralist> <para> <block> <subprogram> <localdef> <assexpr> <asstail> <orexpr> <ortail> <andexpr> <andtail> <cmpexpr> <cmptail> <cmps> <aloexpr> <alotail> <adds> <item> <itemtail> <muls> <factor> <lop> <elem> <idexpr> <realarg> <arglist> <arg> <literal> <expr> <altexpr> <statement> <whilestat> <dowhilestat> <forstat> <forinit> <ifstat> <elsestat> <switchstat> <casestat> <caselabel> <val> <rop>
-extern int char void id lbrack rbrack lparen rparen assign comma semicon or and gt ge lt le equal nequ add mul div mod not sub lea increase decrese num ch str continue break return while do for if else switch case default colon lbrac rbrac
+<program> <segment> <type> <defdata> <varrdef> <init> <deflist> <def> <idtail> <funtail> <paradata> <paradatatail> <paralist> <para> <block> <subprogram> <localdef> <assexpr> <asstail> <orexpr> <ortail> <andexpr> <andtail> <cmpexpr> <cmptail> <cmps> <aloexpr> <alotail> <adds> <item> <itemtail> <muls> <factor> <lop> <elem> <val> <rop> <idexpr> <realarg> <arglist> <arg> <literal> <expr> <altexpr> <statement> <whilestat> <dowhilestat> <forstat> <forinit> <ifstat> <elsestat> <switchstat> <casestat> <caselabel>
+extern int char void id lbrack rbrack lparen rparen assign comma semicon or and gt ge lt le equal nequ add mul div mod not sub lea increase decrease num ch str continue break return while do for if else switch case default colon lbrac rbrac
 <program> <segment> <program>
 <program> <segment>
 <segment> extern <type> <def>

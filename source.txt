@@ -1,0 +1,52 @@
+extern int name;
+extern int name();
+int name=a+b;
+int name=1;
+int *name;
+void fun();
+void fun(){}
+int fun(int x[10],char *y);
+void main()
+{
+	int a=0;
+	int name1,name2;
+	int *ptr,arr[10];
+	char x='a';
+	char str[15];
+	str="hello world";
+	//行注释将被忽略
+	/*
+		块注释也将被忽略
+	*/
+	if((a+b)||(a*b)&&(!d))
+	{
+		while(){}
+		while()
+		{
+			for(int a=1;a<10;a++)
+			{
+				break;
+			}
+		}
+	}
+	if((a%b)==0)
+	{	
+		for(;a>=9;a--)
+		{
+			--a;
+		}
+	}
+	else
+	{
+		do
+		{
+			fun();
+		}while(fun(x,y));
+	}
+	return ;
+}
+int fun()
+{
+	int a[10];
+	return a[1];
+}
