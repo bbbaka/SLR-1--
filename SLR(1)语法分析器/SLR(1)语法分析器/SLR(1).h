@@ -297,6 +297,7 @@ void action()
 { 
 	int i,j,k;
 	first();follow();
+	first();follow();first();follow();
 	print_first();print_follow();
 	for(i=0;i<D.cd_num;i++)//对每个状态循环
 	{
