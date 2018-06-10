@@ -10,7 +10,6 @@
 using namespace std;
 
 #define N 1000
-#define Y 100
 
 int vtnum,vnnum,pronum;//依次是终结符个数，非终结符个数，产生式个数           
 string vt[N];//终结符集         

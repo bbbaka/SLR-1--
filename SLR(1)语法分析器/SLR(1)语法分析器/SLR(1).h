@@ -201,11 +201,11 @@ void follow()//(i,j)为1时表示，vt[j]表示的终结符包含于vn[i]的FOLL
 							FOLLOW[k-2*N][x]=1;
 							flag=1;
 						}
-						else if(x>2*N && x!=4*N)//如果vn[k-100]后为非终结符x，将x的first集加到follow
+						else if(x>=2*N && x!=4*N)//如果vn[k-100]后为非终结符x，将x的first集加到follow
 						{
 							for(y=0;y<=vtnum;y++)
 							{
-								if(FIRST[x-2*N][y]==1 && FOLLOW[k-2*N][y]==0)
+								if((FIRST[x-2*N][y]==1) && (FOLLOW[k-2*N][y]==0))
 								{
 									FOLLOW[k-2*N][y]=1;
 									flag=1;

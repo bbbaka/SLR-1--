@@ -4,16 +4,21 @@
 //#include"LR(0).h"
 #include"SLR(1).h"
 #include"printer.h"
+#include<time.h>  
 /*
-	声明变量时无法同时初始化；
+	1、本文法无法识别 char str[10]="abcdefg"的变量声明
+	   请使用char str[10];str="abcdefg";代替
 	
-	表达式文法有问题 明天再研究研究
+	2、函数体中，1）形式参数名称不能省略。
+				 2）形式参数不允许有默认值。
+				 3）数组参数必须指定数组长度。
 
+	3、bug:敷衍的解决方法，在source中改写位if(a%b==0 ) 
+		if(a%b==0) 经过词法分析器后，会变成 if lp a mod b equ rp rp 
+		原因：疑是字符控制不合理；
+		已解决：在对十进制0的识别中，多回退了一个字节；
 
-
-
-
-
+	4、a--,--a报错 已修复。原因：文法中对终结符定义时拼写错了。。。decrese
 
 
 
@@ -43,6 +48,8 @@ void input_strarray(ifstream &input,string v[])//将Ex Ex ++ Tx填入v[]中。�
 
 int main()
 {
+	 clock_t startTime,endTime;  
+    startTime = clock();  
 	{
 		Token *t;
 		do
@@ -87,5 +94,10 @@ int main()
 	printf_ag();
 
 	Controler();
+
+	endTime = clock();  
+    cout << "Totle Time : " <<(double)(endTime - startTime) / CLOCKS_PER_SEC << "s" << endl;  
+    system("pause");  
+    return 0;  
 }
 

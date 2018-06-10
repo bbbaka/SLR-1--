@@ -137,7 +137,8 @@ void ErroR()
 
 void readin(string &type,int &key,string &value,fstream &str)
 {
-	str>>type>>key>>value;
+	//str>>type>>key>>value;
+	str>>type>>key;getline(str,value);
 	//cout<<type<<" "<<key<<" "<<value<<endl;
 	_log<<type<<" "<<key<<" "<<value<<endl;
 	//str>>type;

@@ -79,6 +79,7 @@
     <ClInclude Include="dfa_generator.h" />
     <ClInclude Include="printer.h" />
     <ClInclude Include="scanner.h" />
+    <ClInclude Include="Semantic.h" />
     <ClInclude Include="SLR(1).h" />
   </ItemGroup>
   <ItemGroup>

@@ -27,6 +27,9 @@
     <ClInclude Include="SLR(1).h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Semantic.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

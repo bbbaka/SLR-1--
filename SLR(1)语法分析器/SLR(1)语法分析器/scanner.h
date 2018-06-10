@@ -103,6 +103,10 @@ public:
 				{
 					op<<left<<setw(15)<<"str"<<left<<setw(10)<<ss++<<left<<setw(10)<<value<<endl;
 				}
+				else if(type=="s_com"||type=="m_com")
+				{
+					return;
+				}
 				else
 				{
 					op<<left<<setw(15)<<type<<left<<setw(10)<<value<<left<<setw(10)<<"null"<<endl;
@@ -118,8 +122,8 @@ public:
 
 };
 
-void error(){			//错误报告位置
-	cout<<"There is an error in line:"<<rol<<endl;//"col:"<<col<<endl;
+void error(string str){			//错误报告位置
+	cout<<"There is an error in line:"<<rol<<"错误原因:"<<str<<endl;//"col:"<<col<<endl;
 	exit(1);
 }
 
@@ -127,7 +131,7 @@ void m_com(){			//块注释自动机 的一段递归小函数
 	char ch;
 	ch=GetChar();
 	if(ch==-1)
-		error();
+		error("多行注释没有正常结束");
 	while(ch!='*')
 		ch=GetChar();
 	while(ch=='*')
@@ -199,19 +203,24 @@ Token * IsNum(char ch)
 				return new Token("Hexadecimal",token);
 			}
 			UnGetC();
-			error();
+			error("十六进制数未正常结束");
 		}
 		else if(ch=='b')
 			{
 				token+=ch;
 				ch=GetChar();
-				while(ch=='0'||ch=='1')
+				if(ch=='0'||ch=='1')
 				{
-					token+=ch;
-					ch=GetChar();
+					while(ch=='0'||ch=='1')
+					{
+						token+=ch;
+						ch=GetChar();
+					}
+					UnGetC();
+					return new Token("binary",token);
 				}
 				UnGetC();
-				return new Token("binary",token);
+				error("二进制数未正常结束");
 			}
 			else
 			{
@@ -225,8 +234,9 @@ Token * IsNum(char ch)
 					UnGetC();
 					return new Token("Octal",token);
 				}
+				UnGetC();
 			}
-		UnGetC();
+		//UnGetC();
 		return new Token("decimal","0");		//值为0的十进制整数
 	}
 	//到达文件尾，返回空
@@ -245,17 +255,17 @@ Token * IsChar(char ch)
 	if(ch=='\'')		
 	{
 		ch=GetChar();
-		if(ch=='\''||ch=='\n'||ch==-1)
+		if(ch=='\''||ch=='\n'||ch==-1)						
 		{
-			error();							//可以通过记录当前读取的行号以返回错误位置
+			error("不支持空字符");							//可以通过记录当前读取的行号以返回错误位置
 			return NULL;
 		}
 		if(ch=='\\')				
 		{	
 			ch=GetChar();
-			if(ch=='\n'||ch=='\\')
+			if(ch=='\n')			//'\\'
 			{
-				error();
+				error("char常量错误");
 				return NULL;
 			}
 		}
@@ -265,7 +275,7 @@ Token * IsChar(char ch)
 			return new Token("_char",token);
 		else
 		{
-			error();
+			error("char常量错误");
 			return NULL;
 		}
 	}
@@ -290,7 +300,7 @@ Token * IsString(char ch)
 			ch=GetChar();
 			if(ch==-1||ch=='\n')
 			{	
-				error();
+				error("string常量出错");
 				return NULL;
 			}
 			token+=ch;
@@ -306,7 +316,7 @@ Token * IsString(char ch)
 		}
 		if(ch=='\n')
 		{
-			error();
+			error("string常量出错");
 			return NULL;
 		}
 		if(ch=='"')
@@ -415,7 +425,7 @@ Token * IsSign(char ch)
 			return new Token("or",to_string(NUM+19));
 		UnGetC();
 		//return new Token("BitwiseOr",to_string(NUM+20)); 爸爸不要你了
-		error();
+		error("不支持位或运算；错误的”或“运算符");
 	}
 	if(ch==',')
 		return new Token("comma",to_string(NUM+21));
@@ -436,7 +446,7 @@ Token * IsSign(char ch)
 	if(ch=='[')
 		return new Token("lbrack",to_string(NUM+29));
 	if(ch==']')
-		return new Token("lbrack",to_string(NUM+30));
+		return new Token("rbrack",to_string(NUM+30));
 	// 待添加的其他界符、运算符
 
 	//到达文件尾，返回空
