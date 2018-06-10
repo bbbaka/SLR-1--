@@ -1,0 +1,139 @@
+134 52 46
+<program> <segment> <type> <defdata> <varrdef> <init> <deflist> <def> <idtail> <funtail> <paradata> <paradatatail> <paralist> <para> <block> <subprogram> <localdef> <assexpr> <asstail> <orexpr> <ortail> <andexpr> <andtail> <cmpexpr> <cmptail> <cmps> <aloexpr> <alotail> <adds> <item> <itemtail> <muls> <factor> <lop> <elem> <idexpr> <realarg> <arglist> <arg> <literal> <expr> <altexpr> <statement> <whilestat> <dowhilestat> <forstat> <forinit> <ifstat> <elsestat> <switchstat> <casestat> <caselabel>
+extern int char void id lbrack rbrack lparen rparen assign comma semicon or and gt ge lt le equal nequ add mul div mod not sub lea increase decrese num ch str continue break return while do for if else switch case default colon lbrac rbrac
+<program> <segment> <program>
+<program> <segment>
+<segment> extern <type> <def>
+<segment> <type> <def>
+<type> int
+<type> char
+<type> void
+<defdata> id <varrdef>
+<defdata> id
+<defdata> mul id <init>
+<defdata> mul id
+<varrdef> lbrack num rbrack
+<varrdef> <init>
+<init> assign <expr>
+<deflist> comma <defdata> <deflist>
+<deflist> semicon
+<def> id <idtail>
+<def> mul id <init> <deflist>
+<def> mul id <deflist>
+<idtail> <varrdef> <deflist>
+<idtail> <deflist>
+<idtail> lparen <para> rparen <funtail>
+<idtail> lparen rparen <funtail>
+<funtail> semicon
+<funtail> <block>
+<paradata> mul id
+<paradata> id <paradatatail>
+<paradata> id
+<paradatatail> lbrack num rbrack
+<paralist> comma <type> <paradata> <paralist>
+<paralist> comma <type> <paradata>
+<para> <type> <paradata> <paralist>
+<para> <type> <paradata>
+<block> lbrac <subprogram> rbrac
+<block> lbrac rbrac
+<subprogram> <localdef> <subprogram>
+<subprogram> <localdef>
+<subprogram> <statement> <subprogram>
+<subprogram> <statement>
+<localdef> <type> <defdata> <deflist>
+
+<assexpr> <orexpr> <asstail>
+<assexpr> <orexpr>
+<asstail> assign <orexpr> <asstail>
+<asstail> assign <orexpr>
+<orexpr> <andexpr> <ortail>
+<orexpr> <andexpr>
+<ortail> or <andexpr> <ortail>
+<ortail> or <andexpr>
+<andexpr> <cmpexpr> <andtail>
+<andexpr> <cmpexpr>
+<andtail> and <cmpexpr> <endtail>
+<andtail> and <cmpexpr>
+<cmpexpr> <aloexpr> <cmptail>
+<cmpexpr> <aloexpr>
+<cmptail> <cmps> <aloexpr> <cmptail>
+<cmptail> <cmps> <aloexpr>
+<cmps> gt
+<cmps> ge
+<cmps> lt
+<cmps> le
+<cmps> equal
+<cmps> nequ
+<aloexpr> <item> <alotail>
+<aloexpr> <item>
+<alotail> <adds> <item> <alotail>
+<alotail> <adds> <item>
+<adds> add
+<adds> sub
+<item> <factor> <itemtail>
+<item> <factor>
+<itemtail> <muls> <factor> <itemtail>
+<itemtail> <muls> <factor>
+<muls> mul
+<muls> div
+<muls> mod
+<factor> <lop> <factor>
+<factor> <val>
+<lop> not
+<lop> sub
+<lop> lea
+<lop> mul
+<lop> increase
+<lop> decrease
+<val> <elem> <rop>
+<val> <elem>
+<rop> increase
+<rop> decrease
+<elem> id <idexpr>
+<elem> id
+<elem> lparen <expr> rparen
+<elem> <literal>
+<idexpr> lbrack <expr> rbrack
+<idexpr> lparen <realarg> rparen
+<idexpr> lparen rparen
+<realarg> <arg> <arglist>
+<realarg> <arg>
+<arglist> comma <arg> <arglist>
+<arglist> comma <arg>
+<arg> <expr>
+<literal> num
+<literal> ch
+<literal> str
+<expr> <assexpr>
+<altexpr> <expr>
+<statement> <altexpr> semicon
+<statement> semicon
+<statement> <whilestat>
+<statement> <forstat>
+<statement> <dowhilestat>
+<statement> <ifstat>
+<statement> <switchstat>
+<statement> break semicon
+<statement> continue semicon
+<statement> return <altexpr> semicon
+<statement> return semicon
+<whilestat> while lparen <altexpr> rparen <block>
+<whilestat> while lparen rparen <block>
+<dowhilestat> do <block> while lparen <altexpr> rparen
+<dowhilestat> do <block> while lparen rparen
+<forstat> for lparen <forinit> <altexpr> semicon <altexpr> rparen <block>
+<forstat> for lparen <forinit> semicon <altexpr> rparen <block>
+<forstat> for lparen <forinit> <altexpr> semicon rparen <block>
+<forstat> for lparen <forinit> semicon rparen <block>
+<forinit> <localdef>
+<forinit> <altexpr> semicon
+<forinit> semicon
+<ifstat> if lparen <expr> rparen <block> <elsestat>
+<ifstat> if lparen <expr> rparen <block>
+<elsestat> else <block>
+<switchstat> switch lparen <expr> rparen lbrac <casestat> rbrac
+<casestat> case <caselabel> colon <subprogram> <casestat>
+<casestat> case <caselabel> colon <casestat>
+<casestat> default colon <subprogram>
+<casestat> default colon
+<caselabel> <literal>
